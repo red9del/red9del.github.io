@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вишняков Даниил — Network Engineer / Tech Support</title>
+<meta name="description" content="Инженер технической поддержки L2/L3 · Сети, PON/OLT, CCTV, VoIP · Новосибирск">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14;
+  --bg-soft:#0f141d;
+  --panel:#121925;
+  --line:#1e2937;
+  --text:#aeb9c9;
+  --text-dim:#697585;
+  --text-bright:#dfe7f0;
+  --amber:#e8b34a;
+  --cyan:#5ccfe6;
+  --green:#7ddc8b;
+  --red:#ff6b6b;
+  --purple:#b58ce8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(1100px 600px at 80% -10%,rgba(92,207,230,.06),transparent 60%),
+    radial-gradient(900px 500px at 0% 100%,rgba(232,179,74,.05),transparent 55%);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+  background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);
+}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* top bar */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(10,14,20,.82);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{max-width:920px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.brand{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--text-bright);font-size:14px;letter-spacing:.3px}
+.brand .dot{color:var(--green)}
+.topbar-actions{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.lang button{
+  background:transparent;border:0;color:var(--text-dim);font-family:'JetBrains Mono',monospace;
+  font-size:12px;font-weight:600;padding:5px 11px;cursor:pointer;transition:.15s;
+}
+.lang button.on{background:var(--amber);color:#0a0e14}
+.btn-cv{
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  color:var(--cyan);text-decoration:none;border:1px solid rgba(92,207,230,.35);
+  padding:6px 13px;border-radius:6px;transition:.15s;white-space:nowrap;
+}
+.btn-cv:hover{background:rgba(92,207,230,.12);border-color:var(--cyan)}
+
+/* hero */
+.hero{padding:78px 0 54px}
+.prompt-line{font-family:'JetBrains Mono',monospace;color:var(--text-dim);font-size:14px;margin-bottom:10px}
+.prompt-line .u{color:var(--green)}
+.prompt-line .p{color:var(--cyan)}
+.type{color:var(--text-bright)}
+.cursor{display:inline-block;width:9px;height:18px;background:var(--amber);margin-left:2px;vertical-align:-3px;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+h1{font-family:'JetBrains Mono',monospace;font-size:clamp(30px,6vw,52px);font-weight:800;color:var(--text-bright);line-height:1.05;letter-spacing:-1px;margin:8px 0 6px}
+.role{font-size:clamp(15px,2.4vw,19px);color:var(--amber);font-weight:600;font-family:'JetBrains Mono',monospace}
+.meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text);
+  background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 11px;
+  display:inline-flex;align-items:center;gap:7px;transition:.15s;text-decoration:none;
+}
+a.chip:hover{border-color:var(--cyan);color:var(--text-bright)}
+.chip .ic{color:var(--cyan)}
+
+/* sections */
+section{padding:30px 0}
+.cmd{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:22px;display:flex;align-items:center;gap:8px}
+.cmd::before{content:"$";color:var(--green);font-weight:700}
+.cmd b{color:var(--amber);font-weight:600}
+
+.about{
+  background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);
+  border-radius:10px;padding:22px 24px;font-size:15.5px;color:var(--text);
+}
+.about strong{color:var(--text-bright);font-weight:600}
+
+/* experience */
+.exp-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:4px}
+.exp-co{font-size:19px;font-weight:700;color:var(--text-bright)}
+.exp-when{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green);margin-left:auto}
+.exp-role{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--amber);margin-bottom:20px}
+.tasks{list-style:none;display:grid;gap:11px}
+.tasks li{
+  position:relative;padding:13px 16px 13px 40px;
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;
+  font-size:14.5px;transition:.15s;
+}
+.tasks li:hover{border-color:var(--line);background:var(--panel);transform:translateX(3px)}
+.tasks li::before{
+  content:"›";position:absolute;left:15px;top:12px;color:var(--cyan);
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;
+}
+.tasks li b{color:var(--text-bright);font-weight:600}
+.tag-row{margin-top:7px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);background:rgba(92,207,230,.08);border:1px solid rgba(92,207,230,.18);border-radius:4px;padding:2px 7px}
+
+/* skills */
+.skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.skillcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 18px 16px;transition:.15s}
+.skillcard:hover{border-color:rgba(232,179,74,.4)}
+.skillcard h3{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:13px;display:flex;align-items:center;gap:7px}
+.skillcard h3 .n{color:var(--text-dim);font-weight:500}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);background:var(--bg-soft);border:1px solid var(--line);border-radius:5px;padding:4px 9px;transition:.15s}
+.pill:hover{color:var(--text-bright);border-color:var(--cyan)}
+
+/* extra */
+.extra{display:grid;gap:10px}
+.extra div{font-size:14.5px;padding-left:24px;position:relative}
+.extra div::before{content:"▹";position:absolute;left:0;color:var(--amber);font-family:'JetBrains Mono',monospace}
+
+/* console */
+.console{background:#070a0f;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 24px 60px -20px rgba(0,0,0,.7)}
+.con-bar{background:var(--bg-soft);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:8px}
+.con-bar .d{width:11px;height:11px;border-radius:50%}
+.con-bar .d1{background:#ff5f56}.con-bar .d2{background:#ffbd2e}.con-bar .d3{background:#27c93f}
+.con-bar span{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);margin-left:8px}
+.con-body{padding:16px;font-family:'JetBrains Mono',monospace;font-size:13.5px;min-height:180px;max-height:280px;overflow-y:auto}
+.con-body .out{color:var(--text);white-space:pre-wrap;margin-bottom:8px;line-height:1.55}
+.con-body .out .k{color:var(--amber)}
+.con-body .out .c{color:var(--cyan)}
+.con-body .echo{color:var(--text-dim);margin-bottom:4px}
+.con-body .echo .g{color:var(--green)}
+.con-input{display:flex;align-items:center;gap:8px;padding:12px 16px;border-top:1px solid var(--line);background:var(--bg-soft)}
+.con-input .ps{font-family:'JetBrains Mono',monospace;color:var(--green);font-size:13.5px}
+.con-input input{flex:1;background:transparent;border:0;outline:none;color:var(--text-bright);font-family:'JetBrains Mono',monospace;font-size:13.5px}
+
+/* footer */
+footer{padding:46px 0 60px;text-align:center;border-top:1px solid var(--line);margin-top:30px}
+footer .mono{color:var(--text-dim);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+
+.reveal{opacity:0;transform:translateY(18px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:560px){
+  .hero{padding:54px 0 40px}
+  .exp-when{margin-left:0;width:100%}
+  .tasks li{padding-left:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .cursor{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">red9del<span class="dot">@</span>noc:~$</div>
+    <div class="topbar-actions">
+      <div class="lang">
+        <button data-lang="ru" class="on">RU</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="btn-cv" href="Резюме_Вишняков.pdf" download>↓ PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="prompt-line mono"><span class="u">red9del</span>@<span class="p">noc</span>:~$ <span class="type" id="typed"></span><span class="cursor"></span></div>
+    <h1>Вишняков Даниил</h1>
+    <div class="role" data-i18n="role">Инженер технической поддержки · Сетевой инженер L2/L3</div>
+    <div class="meta">
+      <span class="chip"><span class="ic">⚲</span> <span data-i18n="loc">Новосибирск, RU</span></span>
+      <span class="chip"><span class="ic">◷</span> <span data-i18n="exp">опыт 2,5 года</span></span>
+      <a class="chip" href="https://t.me/d_vishn" target="_blank" rel="noopener"><span class="ic">✈</span> @d_vishn</a>
+      <a class="chip" href="mailto:spas260@gmail.com"><span class="ic">✉</span> spas260@gmail.com</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="reveal">
+    <div class="cmd mono">cat <b>about.txt</b></div>
+    <div class="about" data-i18n="about">
+      Инженер технической поддержки с опытом <strong>2,5 года</strong> в крупном региональном интернет-провайдере. Сопровождаю сети уровней <strong>L2</strong> и частично <strong>L3</strong>: настройка и диагностика коммутаторов и маршрутизаторов, работа с <strong>PON/OLT</strong>, обработка инцидентов и мониторинг. Помимо сетей работаю со смежными системами: <strong>домофония</strong>, <strong>видеонаблюдение (CCTV)</strong> и <strong>IP-телефония (VoIP/SIP)</strong>. Привык к работе в смену, документированию решений и быстрому поиску первопричины проблемы.
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="reveal">
+    <div class="cmd mono">show <b>experience</b></div>
+    <div class="exp-head">
+      <span class="exp-co">Электронный город</span>
+      <span class="exp-when mono">2.5y → now</span>
+    </div>
+    <div class="exp-role mono" data-i18n="exprole">// инженер технической поддержки · крупный региональный ISP · Новосибирск</div>
+    <ul class="tasks" id="tasks"></ul>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="reveal">
+    <div class="cmd mono">show <b>skills</b></div>
+    <div class="skillgrid" id="skills"></div>
+  </section>
+
+  <!-- EXTRA -->
+  <section class="reveal">
+    <div class="cmd mono">cat <b>extra.txt</b></div>
+    <div class="extra" id="extra"></div>
+  </section>
+
+  <!-- CONSOLE -->
+  <section class="reveal">
+    <div class="cmd mono">./<b>terminal</b> --interactive</div>
+    <div class="console">
+      <div class="con-bar">
+        <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
+        <span class="mono">red9del@noc — try: help, skills, cv, contact, ru, en, clear</span>
+      </div>
+      <div class="con-body" id="conBody"></div>
+      <div class="con-input">
+        <span class="ps">$</span>
+        <input id="conInput" autocomplete="off" spellcheck="false" placeholder="type a command…">
+      </div>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <div class="mono" data-i18n="foot">// собрано вручную · сети, кофе и тёмная музыка · <a href="https://github.com/red9del">github.com/red9del</a></div>
+  </footer>
+
+</div>
+
+<script>
+const DATA = {
+  ru:{
+    role:"Инженер технической поддержки · Сетевой инженер L2/L3",
+    loc:"Новосибирск, RU", exp:"опыт 2,5 года",
+    exprole:"// инженер технической поддержки · крупный региональный ISP · Новосибирск",
+    foot:'// собрано вручную · сети, кофе и тёмная музыка · <a href="https://github.com/red9del">github.com/red9del</a>',
+    typed:["whoami","cat resume.txt","ping job --target dream"],
+    about:`Инженер технической поддержки с опытом <strong>2,5 года</strong> в крупном региональном интернет-провайдере. Сопровождаю сети уровней <strong>L2</strong> и частично <strong>L3</strong>: настройка и диагностика коммутаторов и маршрутизаторов, работа с <strong>PON/OLT</strong>, обработка инцидентов и мониторинг. Помимо сетей работаю со смежными системами: <strong>домофония</strong>, <strong>видеонаблюдение (CCTV)</strong> и <strong>IP-телефония (VoIP/SIP)</strong>. Привык к работе в смену, документированию решений и быстрому поиску первопричины проблемы.`,
+    tasks:[
+      ["Настройка и диагностика <b>L2</b>: VLAN, STP/RSTP, port-security, агрегация каналов (LAG/LACP), QinQ",["VLAN","STP","LACP","QinQ"]],
+      ["Обслуживание сетей доступа на оборудовании <b>Cisco, MikroTik, D-Link, Eltex (MES), SNR</b>",["Cisco","MikroTik","D-Link","Eltex","SNR"]],
+      ["Работа с <b>PON/OLT</b> (ZTE, Eltex LTP): регистрация и привязка ONU/ONT, настройка профилей, диагностика оптической линии",["PON","ZTE","Eltex LTP","ONU/ONT"]],
+      ["Частично <b>L3</b>: статическая маршрутизация, диагностика связности, базовая настройка шлюзов",["Routing","Gateway"]],
+      ["Обработка инцидентов и заявок 2-й линии, эскалация и взаимодействие со смежными отделами",["Incident","2nd line"]],
+      ["Мониторинг состояния сети через <b>Zabbix</b>, реакция на аварии, локализация неисправностей",["Zabbix","Monitoring"]],
+      ["Ведение технической документации по типовым решениям и конфигурациям",["Docs"]],
+      ["<b>Домофония</b>: настройка и SIP-регистрация IP-домофонов (Beward, Akuvox, Rubetek, Sputnik), прошивка, ключи и UID доступа, диагностика и ремонт",["Beward","Akuvox","Rubetek","Sputnik","SIP"]],
+      ["<b>Видеонаблюдение (CCTV)</b>: IP-камеры и NVR/регистраторы (OMNY, Hikvision, Dahua), RTSP-потоки, настройка доступа, диагностика",["Hikvision","Dahua","OMNY","RTSP","NVR"]],
+      ["<b>Телефония</b>: VoIP-шлюзы (FXS/FXO), SIP-trunk и АТС (Asterisk), настройка абонентских устройств, диагностика голосовых проблем",["VoIP","FXS/FXO","Asterisk","SIP-trunk"]]
+    ],
+    skills:[
+      ["Networking","сети",["Cisco","MikroTik","D-Link","Eltex MES/LTP","SNR","ZTE OLT"]],
+      ["L2 / L3","коммутация",["VLAN","STP/RSTP","LACP","port-security","QinQ","Static Routing","PON/GPON"]],
+      ["Monitoring","мониторинг",["Zabbix","диагностика сетей","2-я линия поддержки"]],
+      ["Intercom / CCTV","смежное",["Beward","Akuvox","Rubetek","Sputnik","Hikvision","Dahua","OMNY","RTSP"]],
+      ["Telephony","VoIP",["SIP","FXS/FXO","Asterisk","SIP-trunk"]],
+      ["Dev / Tools","инструменты",["C#","Unity","Git","Linux"]]
+    ],
+    extra:[
+      "Работа в сменном графике",
+      "Английский — чтение технической документации",
+      "Документирование решений и ведение базы знаний",
+      "Самостоятельная локализация первопричины аварий",
+      "Опыт удалённого администрирования сетевого оборудования"
+    ]
+  },
+  en:{
+    role:"Tech Support Engineer · Network Engineer L2/L3",
+    loc:"Novosibirsk, RU", exp:"2.5 yrs experience",
+    exprole:"// tech support engineer · major regional ISP · Novosibirsk",
+    foot:'// hand-built · networks, coffee & dark music · <a href="https://github.com/red9del">github.com/red9del</a>',
+    typed:["whoami","cat resume.txt","ping job --target dream"],
+    about:`Tech support engineer with <strong>2.5 years</strong> at a major regional ISP. I run <strong>L2</strong> and partial <strong>L3</strong> networks: switch/router configuration and diagnostics, <strong>PON/OLT</strong> work, incident handling and monitoring. Beyond networking I also handle adjacent systems: <strong>intercom</strong>, <strong>CCTV</strong> and <strong>IP telephony (VoIP/SIP)</strong>. Used to shift work, documenting solutions and quickly finding the root cause.`,
+    tasks:[
+      ["<b>L2</b> setup & diagnostics: VLAN, STP/RSTP, port-security, link aggregation (LAG/LACP), QinQ",["VLAN","STP","LACP","QinQ"]],
+      ["Access networks on <b>Cisco, MikroTik, D-Link, Eltex (MES), SNR</b>",["Cisco","MikroTik","D-Link","Eltex","SNR"]],
+      ["<b>PON/OLT</b> (ZTE, Eltex LTP): ONU/ONT registration & binding, profiles, optical line diagnostics",["PON","ZTE","Eltex LTP","ONU/ONT"]],
+      ["Partial <b>L3</b>: static routing, connectivity diagnostics, basic gateway setup",["Routing","Gateway"]],
+      ["2nd-line incident & ticket handling, escalation and cross-team work",["Incident","2nd line"]],
+      ["Network monitoring via <b>Zabbix</b>, outage response, fault localization",["Zabbix","Monitoring"]],
+      ["Maintaining technical documentation for standard solutions and configs",["Docs"]],
+      ["<b>Intercom</b>: IP intercom setup & SIP registration (Beward, Akuvox, Rubetek, Sputnik), firmware, access keys/UID, diagnostics & repair",["Beward","Akuvox","Rubetek","Sputnik","SIP"]],
+      ["<b>CCTV</b>: IP cameras & NVR/recorders (OMNY, Hikvision, Dahua), RTSP streams, access setup, diagnostics",["Hikvision","Dahua","OMNY","RTSP","NVR"]],
+      ["<b>Telephony</b>: VoIP gateways (FXS/FXO), SIP-trunk & PBX (Asterisk), subscriber device setup, voice issue diagnostics",["VoIP","FXS/FXO","Asterisk","SIP-trunk"]]
+    ],
+    skills:[
+      ["Networking","networks",["Cisco","MikroTik","D-Link","Eltex MES/LTP","SNR","ZTE OLT"]],
+      ["L2 / L3","switching",["VLAN","STP/RSTP","LACP","port-security","QinQ","Static Routing","PON/GPON"]],
+      ["Monitoring","monitoring",["Zabbix","network diagnostics","2nd-line support"]],
+      ["Intercom / CCTV","adjacent",["Beward","Akuvox","Rubetek","Sputnik","Hikvision","Dahua","OMNY","RTSP"]],
+      ["Telephony","VoIP",["SIP","FXS/FXO","Asterisk","SIP-trunk"]],
+      ["Dev / Tools","tools",["C#","Unity","Git","Linux"]]
+    ],
+    extra:[
+      "Shift-based work schedule",
+      "English — reading technical documentation",
+      "Documenting solutions, maintaining a knowledge base",
+      "Independent root-cause localization of outages",
+      "Remote administration of network equipment"
+    ]
+  }
+};
+
+let lang="ru";
+
+function render(){
+  const d=DATA[lang];
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(d[k]!==undefined) el.innerHTML=d[k];
+  });
+  // tasks
+  document.getElementById("tasks").innerHTML=d.tasks.map(t=>
+    `<li>${t[0]}<div class="tag-row">${t[1].map(x=>`<span class="tag">${x}</span>`).join("")}</div></li>`).join("");
+  // skills
+  document.getElementById("skills").innerHTML=d.skills.map(s=>
+    `<div class="skillcard"><h3>${s[0]} <span class="n">// ${s[1]}</span></h3><div class="pills">${s[2].map(p=>`<span class="pill">${p}</span>`).join("")}</div></div>`).join("");
+  // extra
+  document.getElementById("extra").innerHTML=d.extra.map(e=>`<div>${e}</div>`).join("");
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===lang));
+}
+
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click",()=>{lang=b.dataset.lang;render();startType();});
+});
+
+// typing effect (hero prompt)
+let typeTimer=null;
+function startType(){
+  const el=document.getElementById("typed");
+  const phrases=DATA[lang].typed;
+  let pi=0,ci=0,deleting=false;
+  if(typeTimer) clearTimeout(typeTimer);
+  function step(){
+    const word=phrases[pi];
+    if(!deleting){
+      el.textContent=word.slice(0,++ci);
+      if(ci===word.length){deleting=true;return typeTimer=setTimeout(step,1500);}
+    }else{
+      el.textContent=word.slice(0,--ci);
+      if(ci===0){deleting=false;pi=(pi+1)%phrases.length;}
+    }
+    typeTimer=setTimeout(step,deleting?38:75);
+  }
+  step();
+}
+
+// interactive console
+const conBody=document.getElementById("conBody"),conInput=document.getElementById("conInput");
+function cprint(html,cls="out"){const div=document.createElement("div");div.className=cls;div.innerHTML=html;conBody.appendChild(div);conBody.scrollTop=conBody.scrollHeight;}
+const CMDS={
+  help:()=>lang==="ru"
+    ? `<span class="k">команды:</span>\n  whoami    — кто я\n  skills    — стек и навыки\n  experience— опыт работы\n  cv        — скачать резюме (PDF)\n  contact   — связаться\n  ru / en   — сменить язык\n  clear     — очистить`
+    : `<span class="k">commands:</span>\n  whoami    — who am I\n  skills    — stack & skills\n  experience— work history\n  cv        — download CV (PDF)\n  contact   — get in touch\n  ru / en   — switch language\n  clear     — clear`,
+  whoami:()=>lang==="ru"?`Вишняков Даниил — <span class="c">инженер техподдержки L2/L3</span>, Новосибирск.`:`Daniil Vishnyakov — <span class="c">tech support engineer L2/L3</span>, Novosibirsk.`,
+  skills:()=>DATA[lang].skills.map(s=>`<span class="k">${s[0]}</span>: ${s[2].join(", ")}`).join("\n"),
+  experience:()=>DATA[lang].tasks.map(t=>"• "+t[0].replace(/<[^>]+>/g,"")).join("\n"),
+  cv:()=>{window.location.href="Резюме_Вишняков.pdf";return lang==="ru"?`<span class="c">⤓ скачиваю Резюме_Вишняков.pdf …</span>`:`<span class="c">⤓ downloading Резюме_Вишняков.pdf …</span>`;},
+  contact:()=>`telegram: <span class="c">@d_vishn</span>\nemail:    <span class="c">spas260@gmail.com</span>`,
+  ru:()=>{lang="ru";render();startType();return "язык переключён на русский.";},
+  en:()=>{lang="en";render();startType();return "language switched to english.";},
+  clear:()=>{conBody.innerHTML="";return null}
+};
+function runCmd(raw){
+  const cmd=raw.trim().toLowerCase();
+  cprint(`<span class="g">$</span> ${raw.replace(/</g,"&lt;")}`,"echo");
+  if(!cmd)return;
+  if(CMDS[cmd]){const r=CMDS[cmd]();if(r)cprint(r);}
+  else cprint(lang==="ru"?`команда не найдена: <span class="k">${cmd}</span> — введите <span class="c">help</span>`:`command not found: <span class="k">${cmd}</span> — type <span class="c">help</span>`);
+}
+conInput.addEventListener("keydown",e=>{if(e.key==="Enter"){runCmd(conInput.value);conInput.value="";}});
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+// boot
+render();
+startType();
+cprint(lang==="ru"?`<span class="k">red9del@noc</span> готов. введите <span class="c">help</span> для списка команд.`:`<span class="k">red9del@noc</span> ready. type <span class="c">help</span> for commands.`);
+</script>
+</body>
+</html>
