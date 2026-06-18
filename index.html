@@ -135,6 +135,24 @@ section{padding:30px 0}
 .extra div{font-size:14.5px;padding-left:24px;position:relative}
 .extra div::before{content:"▹";position:absolute;left:0;color:var(--amber);font-family:'JetBrains Mono',monospace}
 
+/* hobbies */
+.proc{display:grid;gap:12px}
+.hcard{background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:16px 19px;transition:.18s}
+.hcard:hover{transform:translateX(3px)}
+.hcard-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.led{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);flex:none}
+.hcard-title{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--text-bright);font-size:14.5px}
+.hcard-status{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);margin-left:auto}
+.hcard-desc{font-size:14px;color:var(--text);margin-bottom:10px}
+.hcard .pills .pill:hover{border-color:var(--cyan)}
+.hcard.gaming:hover{border-color:rgba(125,220,139,.45)}
+.hcard.music:hover{border-color:rgba(181,140,232,.5)}
+.hcard.music .led{background:var(--purple);box-shadow:0 0 8px var(--purple)}
+.hcard.film:hover{border-color:rgba(255,107,107,.45)}
+.hcard.film .led{background:var(--red);box-shadow:0 0 8px var(--red)}
+.hcard.net:hover{border-color:rgba(92,207,230,.5)}
+.hcard.net .led{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+
 /* console */
 .console{background:#070a0f;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 24px 60px -20px rgba(0,0,0,.7)}
 .con-bar{background:var(--bg-soft);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:8px}
@@ -181,6 +199,7 @@ footer a{color:var(--cyan);text-decoration:none}
         <button data-lang="ru" class="on">RU</button>
         <button data-lang="en">EN</button>
       </div>
+      <a class="btn-cv" href="#hobbies">~/about</a>
       <a class="btn-cv" href="Резюме_Вишняков.pdf" download>↓ PDF</a>
     </div>
   </div>
@@ -230,6 +249,12 @@ footer a{color:var(--cyan);text-decoration:none}
   <section class="reveal">
     <div class="cmd mono">cat <b>extra.txt</b></div>
     <div class="extra" id="extra"></div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section class="reveal" id="hobbies">
+    <div class="cmd mono">ps <b>--hobbies</b></div>
+    <div class="proc" id="proc"></div>
   </section>
 
   <!-- CONSOLE -->
@@ -289,6 +314,12 @@ const DATA = {
       "Документирование решений и ведение базы знаний",
       "Самостоятельная локализация первопричины аварий",
       "Опыт удалённого администрирования сетевого оборудования"
+    ],
+    proc:[
+      ["gaming","running","Гейминг","",["Diablo 4","Warframe","Helldivers 2","Terraria","Skyrim"]],
+      ["music","looping","Тёмная музыка","",["darkwave","coldwave","post-punk"]],
+      ["film","watching","Кино","",["триллеры","хоррор","фэнтези","анимация"]],
+      ["net","active","Домашняя сеть / self-hosted","",["self-hosted","медиа-стек","VPN","роутинг"]]
     ]
   },
   en:{
@@ -324,6 +355,12 @@ const DATA = {
       "Documenting solutions, maintaining a knowledge base",
       "Independent root-cause localization of outages",
       "Remote administration of network equipment"
+    ],
+    proc:[
+      ["gaming","running","Gaming","",["Diablo 4","Warframe","Helldivers 2","Terraria","Skyrim"]],
+      ["music","looping","Dark music","",["darkwave","coldwave","post-punk"]],
+      ["film","watching","Films","",["thrillers","horror","fantasy","animation"]],
+      ["net","active","Home network / self-hosted","",["self-hosted","media stack","VPN","routing"]]
     ]
   }
 };
@@ -345,6 +382,9 @@ function render(){
     `<div class="skillcard"><h3>${s[0]} <span class="n">// ${s[1]}</span></h3><div class="pills">${s[2].map(p=>`<span class="pill">${p}</span>`).join("")}</div></div>`).join("");
   // extra
   document.getElementById("extra").innerHTML=d.extra.map(e=>`<div>${e}</div>`).join("");
+  // hobbies
+  document.getElementById("proc").innerHTML=d.proc.map(p=>
+    `<div class="hcard ${p[0]}"><div class="hcard-head"><span class="led"></span><span class="hcard-title">${p[2]}</span><span class="hcard-status mono">[${p[1]}] pid ${p[0]}</span></div>${p[3]?`<div class="hcard-desc">${p[3]}</div>`:""}<div class="pills">${p[4].map(x=>`<span class="pill">${x}</span>`).join("")}</div></div>`).join("");
   document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===lang));
 }
 
